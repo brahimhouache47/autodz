@@ -1,0 +1,318 @@
+.titre {
+  text-decoration: none;
+  color: #616d6f;
+  font-size: 13px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+button.btn {
+  margin-top: auto;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.price {
+  color: #f02020;
+  font-weight: bold;
+}
+h6 {
+  color: black;
+}
+.btn-primary,
+.btn-outline-primary {
+  background-color: #f0c040;
+  color: #000000;
+  height: 40px;
+}
+.btndanger {
+  color: #000000;
+  height: 40px;
+}
+.images {
+  height: 200px;
+  width: 50%;
+}
+.rating span {
+  color: #ffc000;
+}
+.site-container {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.producte {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  font-size: 2rem;
+  margin: 1rem;
+}
+.logo {
+  width: 150px;
+}
+.search {
+  margin-left: 50dp;
+}
+
+.product {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+.product img {
+  width: 100%;
+  max-width: 150px;
+}
+.product-info {
+  padding: 1rem;
+}
+
+.img-large {
+  max-width: 100%;
+}
+.img-thumbnail {
+  height: 80px;
+}
+.small-container {
+  max-width: 600px;
+}
+.checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f08000;
+  color: #f08000;
+}
+/* sidebar */
+.navbar-brand {
+  font-weight: bold;
+}
+.cat {
+  text-decoration: none;
+}
+.side-navbar {
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: #616d6f;
+  transition: 0.5s;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+.site-container {
+  transition: 0.4s;
+}
+.active-cont {
+  margin-left: 240px;
+}
+.active-nav {
+  left: 0;
+}
+.chatbox {
+  color: #000000;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+}
+.chatbox ul {
+  overflow: scroll;
+  max-height: 20rem;
+}
+.chatbox li {
+  margin-bottom: 1rem;
+}
+.chatbox input {
+  width: calc(100% - 9rem);
+}
+
+.support-users {
+  height: 45px;
+}
+
+.support-users button {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+}
+.support-users li {
+  margin-top: 5px;
+  border-bottom: 0.1rem #0e0d0d;
+  background-color: #f0c040;
+}
+
+.support-users li:hover {
+  background-color: #838d8c;
+}
+
+.support-messages {
+  padding: 1rem;
+}
+.support-messages input {
+  width: calc(100% - 9rem);
+}
+.support-messages ul {
+  height: calc(100vh - 18rem);
+  max-height: calc(100vh - 18rem);
+  overflow: scroll;
+}
+.support-messages li {
+  margin-bottom: 1rem;
+}
+
+.support-users span {
+  width: 20px;
+  height: 20px;
+  border-radius: 80%;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 2rem;
+}
+.support-users .offline {
+  background-color: #808080;
+}
+.support-users .online {
+  background-color: #20a020;
+}
+.support-users .unread {
+  background-color: #f02020;
+}
+button.thumbnail {
+  padding: 0;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.sid {
+  margin-bottom: 7px;
+}
+.icon {
+  margin-left: 15px;
+  cursor: pointer;
+  position: relative;
+  width: 25px;
+  height: 40px;
+}
+
+.iconImg1 {
+  width: 40px;
+  height: 30px;
+  margin-top: 8px;
+}
+.iconImg {
+  width: 30px;
+  height: 25px;
+  margin-top: 9px;
+  margin-left: 2px;
+}
+
+.counter {
+  width: 5px;
+  height: 5px;
+  background-color: red;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.notifications {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  color: black;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.notification {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.nButton {
+  width: 80%;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+/**/
+.card {
+  height: 280px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.userImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.postImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.interaction {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.cardIcon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.infoIcon {
+  position: absolute;
+  right: 0;
+  width: 12px;
+  height: 12px;
+}
+/**/

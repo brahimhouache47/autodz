@@ -1,0 +1,24 @@
+.carousel .overlay {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10%;
+  padding: 0.4rem 1.5rem;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.08);
+  color: #dda50c;
+}
+.carousel {
+  position: relative;
+  height: 300px;
+}
+
+.carousel .overlay__title {
+  margin: 0.8rem 0 1rem 0;
+}
+.carousel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
