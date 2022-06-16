@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import Chart from 'react-google-charts';
-import axios from 'axios';
+import Axios from 'axios';
 import { Store } from '../Store';
 import { getError } from '../util';
 import LoadingBox from '../Component/LoadingBox';
@@ -39,7 +39,7 @@ export default function DashboardScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('/api/orders/summary', {
+        const { data } = await Axios.get('/api/orders/summary', {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
@@ -51,11 +51,12 @@ export default function DashboardScreen() {
       }
     };
     fetchData();
-  }, [userInfo]);
+  }, [dispatch, userInfo]);
 
   return (
     <div>
       <h1>Bienvenu {userInfo.name}</h1>
+
       {loading ? (
         <LoadingBox />
       ) : error ? (
@@ -76,15 +77,19 @@ export default function DashboardScreen() {
                       className="rounded mx-auto d-block h-75 w-50"
                     />
                   </Link>
-                  <div className="text-center display-3">
-                    {summary.users && summary.users[0]
-                      ? summary.users[0].numUsers
-                      : 0}
-                  </div>
-                  <h6 className="text-center">utilisateurs</h6>
+                  <Card.Title className="text-center display-6">
+                    {summary.users[0].numUsers}
+                    <br></br>
+                  </Card.Title>
+
+                  <Card.Text className="text-center display-7">
+                    {' '}
+                    Utilisateurs
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
+
             <Col md={4}>
               <Card>
                 <Card.Body>
@@ -98,15 +103,19 @@ export default function DashboardScreen() {
                       className="rounded mx-auto d-block h-75 w-50"
                     />
                   </Link>
-                  <div className="text-center display-3">
-                    {summary.orders && summary.users[0]
+
+                  <Card.Title className="text-center display-6">
+                    {summary.orders && summary.orders[0]
                       ? summary.orders[0].numOrders
-                      : 0}{' '}
-                  </div>{' '}
-                  <h6 className="text-center">commandes</h6>
+                      : 0}
+                  </Card.Title>
+                  <Card.Text className="text-center display-7">
+                    Commandes
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
+
             <Col md={4}>
               <Card>
                 <Card.Body>
@@ -115,17 +124,21 @@ export default function DashboardScreen() {
                     alt=""
                     className="rounded mx-auto d-block h-50 w-50"
                   />
-                  <div className="text-center display-4 mt-4">
-                    {summary.orders && summary.users[0]
-                      ? summary.orders[0].totalSales
+
+                  <Card.Title className="mt-4 text-center display-6">
+                    {summary.orders && summary.orders[0]
+                      ? summary.orders[0].totalSales.toFixed(2)
                       : 0}{' '}
                     DA
-                  </div>
-                  <h6 className="text-center">Montant Total Commandes</h6>
+                  </Card.Title>
+                  <Card.Text className="text-center display-7">
+                    Total Commandes
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
+
           <div className="my-3">
             <h2>Ventes</h2>
             {summary.dailyOrders.length === 0 ? (
