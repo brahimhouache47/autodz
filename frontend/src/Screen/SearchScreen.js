@@ -110,11 +110,11 @@ export default function SearchScreen() {
       <Row>
         <Col md={3}>
           <h3>Catégorie</h3>
-          <div>
-            <ul>
-              <li>
+          <div className="card" style={{ width: '14rem' }}>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
                 <Link
-                  style={{ textDecoration: 'none' }}
+                  style={{ textDecoration: 'none', color: 'black' }}
                   className={'all' === category ? 'text-bold' : ''}
                   to={getFilterUrl({ category: 'all' })}
                 >
@@ -122,9 +122,9 @@ export default function SearchScreen() {
                 </Link>
               </li>
               {categories.map((c) => (
-                <li key={c}>
+                <li className="list-group-item" key={c}>
                   <Link
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: 'none', color: 'red' }}
                     className={c === category ? 'text-bold' : ''}
                     to={getFilterUrl({ category: c })}
                   >
@@ -134,12 +134,12 @@ export default function SearchScreen() {
               ))}
             </ul>
           </div>
-          <div>
-            <h3>Prix</h3>
-            <ul>
-              <li>
+          <h3>Prix</h3>
+          <div className="card" style={{ width: '14rem' }}>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
                 <Link
-                  style={{ textDecoration: 'none' }}
+                  style={{ textDecoration: 'none', color: 'black' }}
                   className={'all' === price ? 'text-bold ' : ''}
                   to={getFilterUrl({ price: 'all' })}
                 >
@@ -147,9 +147,9 @@ export default function SearchScreen() {
                 </Link>
               </li>
               {prices.map((p) => (
-                <li key={p.value}>
+                <li className="list-group-item" key={p.value}>
                   <Link
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: 'none', color: 'red' }}
                     to={getFilterUrl({ price: p.value })}
                     className={p.value === price ? 'text-bold' : ''}
                   >

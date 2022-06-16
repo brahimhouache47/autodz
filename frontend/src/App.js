@@ -141,7 +141,7 @@ function App() {
                     <NavDropdown
                       title="Administrateur"
                       id="admin-nav-dropdown"
-                      className="bg-muted counter1 bg-success"
+                      className="bg-success bg-gradient"
                     >
                       <LinkContainer to="/admin/dashboard">
                         <NavDropdown.Item>Dashboard</NavDropdown.Item>

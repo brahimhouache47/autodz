@@ -221,7 +221,7 @@ export default function OrderScreen() {
           </div>
         </Col>
         <Col md={4}>
-          <Card className="mb-3 h-25 ">
+          <Card className="mb-3 h-50 ">
             <Card.Body>
               <Card.Title>Compte rendu Commande</Card.Title>
               <ListGroup variant="flush">

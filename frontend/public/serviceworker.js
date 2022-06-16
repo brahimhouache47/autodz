@@ -51,7 +51,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys
-          .filter((key) => key != staticCacheName)
+          .filter((key) => key !== staticCacheName)
           .map((key) => caches.delete(key))
       );
     })

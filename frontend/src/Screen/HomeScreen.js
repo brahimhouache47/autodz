@@ -54,6 +54,7 @@ function HomeScreen() {
     };
     fetchCategories();
   }, [categories]);
+
   return (
     <div>
       <Helmet>

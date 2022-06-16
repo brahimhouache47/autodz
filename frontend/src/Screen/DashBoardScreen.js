@@ -9,7 +9,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-
+import man from '../users.png';
+import com from '../orders.png';
+import money from '../money.png';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -64,47 +66,62 @@ export default function DashboardScreen() {
             <Col md={4}>
               <Card>
                 <Card.Body>
-                  <Card.Title>
-                    {summary.users && summary.users[0]
-                      ? summary.users[0].numUsers
-                      : 0}
-                  </Card.Title>
                   <Link
                     style={{ textDecoration: 'none', color: 'black' }}
                     to="/admin/users"
                   >
-                    Utilisateus
+                    <img
+                      src={man}
+                      alt=""
+                      className="rounded mx-auto d-block h-75 w-50"
+                    />
                   </Link>
+                  <div className="text-center display-3">
+                    {summary.users && summary.users[0]
+                      ? summary.users[0].numUsers
+                      : 0}
+                  </div>
+                  <h6 className="text-center">utilisateurs</h6>
                 </Card.Body>
               </Card>
             </Col>
             <Col md={4}>
               <Card>
                 <Card.Body>
-                  <Card.Title>
-                    {summary.orders && summary.users[0]
-                      ? summary.orders[0].numOrders
-                      : 0}
-                  </Card.Title>
                   <Link
                     style={{ textDecoration: 'none', color: 'black' }}
                     to="/admin/orders"
                   >
-                    Commandes
+                    <img
+                      src={com}
+                      alt=""
+                      className="rounded mx-auto d-block h-75 w-50"
+                    />
                   </Link>
+                  <div className="text-center display-3">
+                    {summary.orders && summary.users[0]
+                      ? summary.orders[0].numOrders
+                      : 0}{' '}
+                  </div>{' '}
+                  <h6 className="text-center">commandes</h6>
                 </Card.Body>
               </Card>
             </Col>
             <Col md={4}>
               <Card>
                 <Card.Body>
-                  <Card.Title>
+                  <img
+                    src={money}
+                    alt=""
+                    className="rounded mx-auto d-block h-50 w-50"
+                  />
+                  <div className="text-center display-4 mt-4">
                     {summary.orders && summary.users[0]
                       ? summary.orders[0].totalSales
                       : 0}{' '}
                     DA
-                  </Card.Title>
-                  <Card.Text> Montant Total Commandes</Card.Text>
+                  </div>
+                  <h6 className="text-center">Montant Total Commandes</h6>
                 </Card.Body>
               </Card>
             </Col>

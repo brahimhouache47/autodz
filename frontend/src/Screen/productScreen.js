@@ -154,7 +154,7 @@ function ProductScreen() {
               <Helmet>
                 <title>{product.name}</title>
               </Helmet>
-              <h1>{product.name}</h1>
+              <h3>{product.name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
@@ -188,7 +188,7 @@ function ProductScreen() {
           </ListGroup>
         </Col>
         <Col md={3}>
-          <Card className="ms-4">
+          <Card className="ms-3 ">
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>
@@ -227,7 +227,7 @@ function ProductScreen() {
               <tr>
                 <td>
                   <Button
-                    className="btn-primary ms-4 mt-2"
+                    className="btn-primary ms-3 mt-2"
                     type="button"
                     variant="light"
                     onClick={() => navigate(`/admin/product/${product._id}`)}
