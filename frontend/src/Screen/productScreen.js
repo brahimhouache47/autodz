@@ -188,7 +188,7 @@ function ProductScreen() {
           </ListGroup>
         </Col>
         <Col md={3}>
-          <Card className="ms-3 ">
+          <Card className="  ms-3 " style={{ height: '160px' }}>
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>

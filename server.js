@@ -101,10 +101,8 @@ io.on('connection', (socket) => {
     }
   });
   /** */
-  socket.on('sendNotification', ({ senderName }) => {
-    io.to(admin.socketId).emit('getNotification', {
-      senderName,
-    });
+  io.on('notification', (data) => {
+    console.log(data);
   });
 
   /** */
@@ -134,7 +132,7 @@ io.on('connection', (socket) => {
 httpServer.listen(port, () => {
   console.log(`Serve at http://localhost:${port}`);
 });
-
+export { users, io };
 //app.listen(port, () => {
 // console.log(`serve at http://localhost:${port}`);
 //});

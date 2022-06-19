@@ -3,6 +3,9 @@
   color: #616d6f;
   font-size: 13px;
 }
+.carte {
+  height: 10px;
+}
 
 .card-body {
   display: flex;
@@ -90,6 +93,11 @@ main {
 .img-thumbnail {
   height: 80px;
 }
+.img-chat {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
 .small-container {
   max-width: 600px;
 }
@@ -129,6 +137,8 @@ main {
 .active-nav {
   left: 0;
 }
+/**/
+
 .chatbox {
   color: #000000;
   position: fixed;
@@ -143,8 +153,14 @@ main {
   margin-bottom: 1rem;
 }
 .chatbox input {
+  overflow: scroll;
+
   width: calc(100% - 9rem);
 }
+.scroll {
+  overflow-y: auto;
+}
+/**/
 
 .support-users {
   height: 45px;

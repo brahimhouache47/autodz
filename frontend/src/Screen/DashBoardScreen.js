@@ -77,7 +77,7 @@ export default function DashboardScreen() {
                       className="rounded mx-auto d-block h-75 w-50"
                     />
                   </Link>
-                  <Card.Title className="text-center display-6">
+                  <Card.Title className="text-center display-7">
                     {summary.users[0].numUsers}
                     <br></br>
                   </Card.Title>
@@ -104,7 +104,7 @@ export default function DashboardScreen() {
                     />
                   </Link>
 
-                  <Card.Title className="text-center display-6">
+                  <Card.Title className="text-center display-7">
                     {summary.orders && summary.orders[0]
                       ? summary.orders[0].numOrders
                       : 0}

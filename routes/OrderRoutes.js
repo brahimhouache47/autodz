@@ -4,6 +4,7 @@ import Order from '../modeles/OrderModels.js';
 import { isAuth, isAdmin, mailgun, payOrderEmailTemplate } from '../utils.js';
 import User from '../modeles/userModel.js';
 import Product from '../modeles/productModel.js';
+import { users, io } from '../server.js';
 
 const orderRouter = express.Router();
 
@@ -39,7 +40,16 @@ orderRouter.post(
       product.countInStock -= item.quantity;
       await product.save();
     }
-
+    console.log('new order');
+    const admin = users.find((x) => x.isAdmin && x.online);
+    if (admin) {
+      io.to(admin.socketId).emit('message', {
+        body: 'noveau commande',
+        name: '',
+        isAdmin: false,
+        _id: '0000',
+      });
+    }
     res.status(201).send({ message: 'Noveau commande ', order });
   })
 );

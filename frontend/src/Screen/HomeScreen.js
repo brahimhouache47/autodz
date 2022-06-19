@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect, useReducer, useContext, useRef } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
@@ -9,8 +9,9 @@ import LoadingBox from '../Component/LoadingBox';
 import MessageBox from '../Component/MessageBox';
 import { toast } from 'react-toastify';
 import { getError } from '../util';
-import Slider from '../Component/Slider';
-import { Carousel } from 'react-responsive-carousel';
+import socketIOClient from 'socket.io-client';
+import { Store } from '../Store';
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -54,6 +55,42 @@ function HomeScreen() {
     };
     fetchCategories();
   }, [categories]);
+  /** */
+  const [selectedUser, setSelectedUser] = useState({});
+  const [socket, setSocket] = useState(null);
+  const uiMessagesRef = useRef(null);
+  const [messageBody, setMessageBody] = useState('');
+  const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  const { state } = useContext(Store);
+  const { userInfo } = state;
+  const ENDPOINT =
+    window.location.host.indexOf('localhost') >= 0
+      ? 'http://127.0.0.1:5000'
+      : window.location.host;
+
+  if (!socket) {
+    const sk = socketIOClient(ENDPOINT);
+    setSocket(sk);
+
+    sk.on('message', (data) => {
+      Notification.requestPermission().then((result) => {
+        if (result === 'granted') {
+          const notifTitle = data.name;
+          const notifBody = data.body;
+          const notifImg = '../co.jpg';
+          const options = {
+            body: notifBody,
+            icon: notifImg,
+          };
+          new Notification(notifTitle, options);
+        }
+      });
+    });
+  }
+
+  /** */
 
   return (
     <div>

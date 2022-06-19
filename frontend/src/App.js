@@ -37,8 +37,7 @@ import UserEditScreen from './Screen/UserEditScreen';
 import logo from './logo.PNG';
 import SupportScreen from './Screen/SupportScreen';
 import ChatBox from './Component/ChatBox';
-import msg from './message.png';
-import notif from './notificationa.png';
+
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -288,8 +287,8 @@ function App() {
         </main>
 
         <footer className="footer">
-          <Footer />
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+          <Footer />
         </footer>
       </div>
     </BrowserRouter>

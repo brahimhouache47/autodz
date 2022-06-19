@@ -170,7 +170,7 @@ export default function OrderScreen() {
                   Livré à {order.deliveredAt}
                 </MessageBox>
               ) : (
-                <MessageBox variant="danger">Non livrés</MessageBox>
+                <MessageBox variant="secondary">Non livrés</MessageBox>
               )}
             </Card.Body>
           </Card>
@@ -183,7 +183,7 @@ export default function OrderScreen() {
               {order.isPaid ? (
                 <MessageBox variant="success">Payé à {order.paidAt}</MessageBox>
               ) : (
-                <MessageBox variant="danger">Impayé</MessageBox>
+                <MessageBox variant="secondary">Impayé</MessageBox>
               )}
             </Card.Body>
           </Card>

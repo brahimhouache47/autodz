@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import message from '../message.png';
 
 const ENDPOINT =
   window.location.host.indexOf('localhost') >= 0
@@ -69,14 +70,16 @@ export default function ChatBox(props) {
     setIsOpen(false);
   };
   return (
-    <div className="chatbox mb-4 ">
+    <div className="chatbox ">
       {!isOpen ? (
-        <Button type="button" onClick={supportHandler}>
-          <i className="" />
-          Service Client
-        </Button>
+        <img
+          className="img-chat "
+          src={message}
+          alt=""
+          onClick={supportHandler}
+        ></img>
       ) : (
-        <Card>
+        <Card className="scroll">
           <Card.Body>
             <Row className="justify-content-between align-items-center">
               <Col>
@@ -105,14 +108,15 @@ export default function ChatBox(props) {
                     onChange={(e) => setMessageBody(e.target.value)}
                     required
                   />
-                  <Button
-                    variant="outline-primary"
-                    type="submit"
-                    id="button-search"
-                  >
-                    Envoyer
-                  </Button>
                 </InputGroup>
+                <Button
+                  className="mt-2"
+                  variant="outline-primary"
+                  type="submit"
+                  id="button-search"
+                >
+                  Envoyer
+                </Button>
               </form>
             </div>
           </Card.Body>
