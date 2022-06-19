@@ -73,7 +73,11 @@ function HomeScreen() {
   if (!socket) {
     const sk = socketIOClient(ENDPOINT);
     setSocket(sk);
-
+    sk.emit('onLogin', {
+      _id: userInfo._id,
+      name: userInfo.name,
+      isAdmin: userInfo.isAdmin,
+    });
     sk.on('message', (data) => {
       Notification.requestPermission().then((result) => {
         if (result === 'granted') {
