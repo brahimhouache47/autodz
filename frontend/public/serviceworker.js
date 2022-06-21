@@ -10,7 +10,6 @@ const filesToCache = [
   '/api/products/search?page=1&query=all&category=Transmission&price=all&order=newest',
   '/api/products/search?page=1&query=all&category=Filtre&price=all&order=newest',
   '/api/products/categories',
-  '/assets/icons/icon-512x512.png',
   '/static/media/logo.00488e36c532970a2648.PNG',
   '/manifest.json',
 ];

@@ -24,6 +24,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
 function HomeScreen() {
   const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     products: [],
@@ -56,43 +57,30 @@ function HomeScreen() {
     fetchCategories();
   }, [categories]);
   /** */
-  const [selectedUser, setSelectedUser] = useState({});
-  const [socket, setSocket] = useState(null);
-  const uiMessagesRef = useRef(null);
-  const [messageBody, setMessageBody] = useState('');
-  const [messages, setMessages] = useState([]);
-  const [users, setUsers] = useState([]);
 
-  const { state } = useContext(Store);
-  const { userInfo } = state;
+  /** */
+
   const ENDPOINT =
     window.location.host.indexOf('localhost') >= 0
       ? 'http://127.0.0.1:5000'
       : window.location.host;
 
-  if (!socket) {
-    const sk = socketIOClient(ENDPOINT);
-    setSocket(sk);
-    sk.emit('onLogin', {
-      _id: userInfo._id,
-      name: userInfo.name,
-      isAdmin: userInfo.isAdmin,
+  const sk = socketIOClient(ENDPOINT);
+
+  sk.on('message', (data) => {
+    Notification.requestPermission().then((result) => {
+      if (result === 'granted') {
+        const notifTitle = 'vous aves un nouveau commande';
+        const notifBody = 'noveau commande';
+        const notifImg = `data/imga.jpg`;
+        const options = {
+          body: notifBody,
+          icon: notifImg,
+        };
+        new Notification(notifTitle, options);
+      }
     });
-    sk.on('message', (data) => {
-      Notification.requestPermission().then((result) => {
-        if (result === 'granted') {
-          const notifTitle = data.name;
-          const notifBody = data.body;
-          const notifImg = '../co.jpg';
-          const options = {
-            body: notifBody,
-            icon: notifImg,
-          };
-          new Notification(notifTitle, options);
-        }
-      });
-    });
-  }
+  });
 
   /** */
 

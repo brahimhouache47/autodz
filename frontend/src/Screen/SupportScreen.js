@@ -46,6 +46,19 @@ export default function SupportScreen() {
         isAdmin: userInfo.isAdmin,
       });
       sk.on('message', (data) => {
+        Notification.requestPermission().then((result) => {
+          if (result === 'granted') {
+            const notifTitle = data.name;
+            const notifBody = data.body;
+            const notifImg = '../co.jpg';
+            const options = {
+              body: notifBody,
+              icon: notifImg,
+            };
+            new Notification(notifTitle, options);
+          }
+        });
+
         if (allSelectedUser._id === data._id) {
           allMessages = [...allMessages, data];
         } else {

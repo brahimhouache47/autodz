@@ -101,9 +101,6 @@ io.on('connection', (socket) => {
     }
   });
   /** */
-  io.on('notification', (data) => {
-    console.log(data);
-  });
 
   /** */
   socket.on('onMessage', (message) => {

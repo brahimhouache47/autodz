@@ -45,7 +45,7 @@ orderRouter.post(
     if (admin) {
       io.to(admin.socketId).emit('message', {
         body: 'noveau commande',
-        name: '',
+        name: user.name,
         isAdmin: false,
         _id: '0000',
       });
