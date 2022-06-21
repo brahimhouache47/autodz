@@ -73,6 +73,25 @@ export default function SupportScreen() {
         setMessages(allMessages);
       });
 
+      /** */
+
+      sk.on('Commande', (data) => {
+        Notification.requestPermission().then((result) => {
+          if (result === 'granted') {
+            const notifTitle = data.name;
+            const notifBody = data.body;
+            const notifImg = '../co.jpg';
+            const options = {
+              body: notifBody,
+              icon: notifImg,
+            };
+            new Notification(notifTitle, options);
+          }
+        });
+        setMessages(allMessages);
+      });
+
+      /** */
       sk.on('updateUser', (updatedUser) => {
         const existUser = allUsers.find((user) => user._id === updatedUser._id);
         if (existUser) {

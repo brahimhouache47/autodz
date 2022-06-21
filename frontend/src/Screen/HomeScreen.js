@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer, useContext, useRef } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
@@ -9,8 +9,6 @@ import LoadingBox from '../Component/LoadingBox';
 import MessageBox from '../Component/MessageBox';
 import { toast } from 'react-toastify';
 import { getError } from '../util';
-import socketIOClient from 'socket.io-client';
-import { Store } from '../Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -24,7 +22,6 @@ const reducer = (state, action) => {
       return state;
   }
 };
-
 function HomeScreen() {
   const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     products: [],
@@ -55,35 +52,7 @@ function HomeScreen() {
       }
     };
     fetchCategories();
-  }, [categories]);
-  /** */
-
-  /** */
-
-  const ENDPOINT =
-    window.location.host.indexOf('localhost') >= 0
-      ? 'http://127.0.0.1:5000'
-      : window.location.host;
-
-  const sk = socketIOClient(ENDPOINT);
-
-  sk.on('message', (data) => {
-    Notification.requestPermission().then((result) => {
-      if (result === 'granted') {
-        const notifTitle = 'vous aves un nouveau commande';
-        const notifBody = 'noveau commande';
-        const notifImg = `data/imga.jpg`;
-        const options = {
-          body: notifBody,
-          icon: notifImg,
-        };
-        new Notification(notifTitle, options);
-      }
-    });
-  });
-
-  /** */
-
+  }, []);
   return (
     <div>
       <Helmet>

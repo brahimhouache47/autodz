@@ -10,8 +10,6 @@ const filesToCache = [
   '/api/products/search?page=1&query=all&category=Transmission&price=all&order=newest',
   '/api/products/search?page=1&query=all&category=Filtre&price=all&order=newest',
   '/api/products/categories',
-  '/static/media/logo.00488e36c532970a2648.PNG',
-  '/manifest.json',
 ];
 
 const self = this;
@@ -27,6 +25,9 @@ self.addEventListener('install', (event) => {
   );
 });
 /** */
+/** */
+
+// Fetch event
 self.addEventListener('fetch', (event) => {
   if (!(event.request.url.indexOf('http') === 0)) return;
   event.respondWith(
@@ -43,10 +44,6 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-
-/** */
-
-// Fetch event
 
 // Activate the SW
 self.addEventListener('activate', (event) => {

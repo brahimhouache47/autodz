@@ -43,9 +43,9 @@ orderRouter.post(
     console.log('new order');
     const admin = users.find((x) => x.isAdmin && x.online);
     if (admin) {
-      io.to(admin.socketId).emit('message', {
-        body: 'noveau commande',
-        name: user.name,
+      io.to(admin.socketId).emit('commande', {
+        body: '',
+        name: '',
         isAdmin: false,
         _id: '0000',
       });
