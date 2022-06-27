@@ -51,9 +51,9 @@ export default function SignupScreen() {
   return (
     <Container className="small-container">
       <Helmet>
-        <title>Registre</title>
+        <title>S'inscrire</title>
       </Helmet>
-      <h1 className="my-3">Registre</h1>
+      <h1 className="my-3">S'inscrire</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Nom</Form.Label>
@@ -85,7 +85,7 @@ export default function SignupScreen() {
           </Form.Group>
         </Form.Group>
         <div className="mb-3">
-          <Button type="submit">Registre</Button>
+          <Button type="submit">S'inscrire</Button>
         </div>
         <div className="mb-3">
           Vous avez déjà un compte?{' '}

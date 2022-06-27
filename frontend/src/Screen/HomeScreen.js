@@ -7,8 +7,7 @@ import Product from '../Component/Product';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../Component/LoadingBox';
 import MessageBox from '../Component/MessageBox';
-import { toast } from 'react-toastify';
-import { getError } from '../util';
+import socketIOClient from 'socket.io-client';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -28,6 +27,48 @@ function HomeScreen() {
     loading: true,
     error: '',
   });
+  /** */
+  const [socket, setSocket] = useState(null);
+
+  const ENDPOINT =
+    window.location.host.indexOf('localhost') >= 0
+      ? 'http://127.0.0.1:5000'
+      : window.location.host;
+  /** */
+  if (!socket) {
+    const sk = socketIOClient(ENDPOINT);
+    setSocket(sk);
+    sk.on('message', (data) => {
+      Notification.requestPermission().then((result) => {
+        if (result === 'granted') {
+          const notifTitle = data.name;
+          const notifBody = data.body;
+          const notifImg = '../co.jpg';
+          const options = {
+            body: notifBody,
+            icon: notifImg,
+          };
+          new Notification(notifTitle, options);
+        }
+      });
+    });
+
+    /** */
+
+    sk.on('commande', (data) => {
+      Notification.requestPermission().then((result) => {
+        if (result === 'granted') {
+          const notifTitle = 'Vous Avés un Noveau Commande';
+          const notifImg = '../logo.svg';
+          const options = {
+            icon: notifImg,
+          };
+          new Notification(notifTitle, options);
+        }
+      });
+    });
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
@@ -40,35 +81,26 @@ function HomeScreen() {
     };
     fetchData();
   }, []);
-  const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const { data } = await axios.get(`/api/products/categories`);
-        setCategories(data);
-      } catch (err) {
-        toast.error(getError(err));
-      }
-    };
-    fetchCategories();
-  }, []);
   return (
     <div>
       <Helmet>
         <title>AutoPartDZ</title>
       </Helmet>
 
-      <h1>Les Noveaux Produit</h1>
+      <h1>Notre Produits</h1>
       <div className="products">
         {loading ? (
           <LoadingBox />
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <Row md={3}>
+          <Row>
+            {products.length === 0 && (
+              <MessageBox>Aucun Produit Trouvee</MessageBox>
+            )}
             {products.map((product) => (
-              <Col key={product.slug} sm={6} md={6} lg={3}>
+              <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
                 <Product product={product}></Product>
               </Col>
             ))}

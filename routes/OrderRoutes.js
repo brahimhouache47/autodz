@@ -40,14 +40,11 @@ orderRouter.post(
       product.countInStock -= item.quantity;
       await product.save();
     }
-    console.log('new order');
     const admin = users.find((x) => x.isAdmin && x.online);
     if (admin) {
       io.to(admin.socketId).emit('commande', {
-        body: '',
         name: '',
         isAdmin: false,
-        _id: '0000',
       });
     }
     res.status(201).send({ message: 'Noveau commande ', order });
@@ -157,7 +154,7 @@ orderRouter.put(
           {
             from: 'AutoPartDZ<h26081996@gmail.com>',
             to: `${order.user.name} <${order.user.email}>`,
-            subject: `New order ${order._id}`,
+            subject: `Noveau commande ${order._id}`,
             html: payOrderEmailTemplate(order),
           },
           (error, body) => {

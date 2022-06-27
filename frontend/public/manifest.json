@@ -57,5 +57,6 @@
   "display": "standalone",
   "theme_color": "#f0c040",
   "background_color": "#f0c040",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "lang": "fr"
 }

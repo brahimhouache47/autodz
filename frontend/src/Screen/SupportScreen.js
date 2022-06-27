@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import MessageBox from '../Component/MessageBox';
 import { Store } from '../Store';
 import { Helmet } from 'react-helmet-async';
+import { Navigate } from 'react-router-dom';
 
 let allUsers = [];
 let allMessages = [];
@@ -75,14 +76,12 @@ export default function SupportScreen() {
 
       /** */
 
-      sk.on('Commande', (data) => {
+      sk.on('commande', (data) => {
         Notification.requestPermission().then((result) => {
           if (result === 'granted') {
-            const notifTitle = data.name;
-            const notifBody = data.body;
+            const notifTitle = 'Vous Avés un Noveau Commande';
             const notifImg = '../co.jpg';
             const options = {
-              body: notifBody,
               icon: notifImg,
             };
             new Notification(notifTitle, options);

@@ -12,6 +12,7 @@ import CheckoutSteps from '../Component/checkOutStep';
 import { toast } from 'react-toastify';
 import { getError } from '../util';
 import LoadingBox from '../Component/LoadingBox';
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'CREATE_REQUEST':
@@ -72,6 +73,9 @@ export default function PlaceOrderScreen() {
     }
   };
 
+  /** Rafik */
+
+  /* */
   useEffect(() => {
     if (!cart.paymentMethod) {
       navigate('/payment');

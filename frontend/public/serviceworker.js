@@ -24,8 +24,6 @@ self.addEventListener('install', (event) => {
       .catch((err) => {})
   );
 });
-/** */
-/** */
 
 // Fetch event
 self.addEventListener('fetch', (event) => {
@@ -58,5 +56,3 @@ self.addEventListener('activate', (event) => {
   );
 });
 /** */
-
-/****************************************************/

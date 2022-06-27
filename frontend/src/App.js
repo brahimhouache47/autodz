@@ -38,9 +38,15 @@ import logo from './logo.PNG';
 import SupportScreen from './Screen/SupportScreen';
 import ChatBox from './Component/ChatBox';
 
+/** */
+
+/** */
+
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
+
+  /** */
 
   /** */
   const signoutHandler = () => {
@@ -189,6 +195,7 @@ function App() {
             ))}
           </Nav>
         </div>
+
         <main>
           <Container className="mt-4">
             <Routes>

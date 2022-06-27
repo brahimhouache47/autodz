@@ -12,7 +12,7 @@ import LoadingBox from '../Component/LoadingBox';
 import MessageBox from '../Component/MessageBox';
 import { getError } from '../util';
 import { Store } from '../Store';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
